@@ -1,14 +1,11 @@
 # resume
 
-<whoami>
-Nama          : Miftah Firdaus 
-Universitas   : Universitas Pendidikan Indonesia 
-Email         : miftahers@gmail.com
-Materi        : Version Control and Branch Management Git 
-Tanggal       : 23-Agustus-22
-</whoami>
+Nama          : Miftah Firdaus ||  
+Universitas   : Universitas Pendidikan Indonesia ||  
+Email         : miftahers@gmail.com ||  
+Materi        : Version Control and Branch Management Git ||
+Tanggal       : 23-Agustus-22 ||
 
-<Resume>
 Github => Version Control System (VCS)
 
 # introduction
@@ -72,5 +69,3 @@ Pull request berarti memohon orang lain yang berkolaborasi untuk mengunduh pemba
 2. Buat cabang development dari master/main untuk mengontrol versi dari pengembangan aplikasi oleh pengembang
 3. Buat cabang untuk setiap fitur dari branch/cabang development
 4. Lakukan pembaruan pada cabang development dari cabang fitur jangan tambahkan kode secara langsung ke cabang development
-
-</resume>
