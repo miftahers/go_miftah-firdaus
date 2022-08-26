@@ -34,9 +34,7 @@ Miftah Firdaus (miftahers@gmail.com) -26-Agustus-22
    !["Looping"](https://images.edrawsoft.com/articles/flowchart-symbols/preparation-symbol.png) Looping/Perulangan
    
    Contoh Flow chart untuk menghitung luas segitiga (Sequential):
-   !["Flow chart for Area of Triangle"](Screenshot/Flow-Chart-for-Area-of-Triangle.png)
+   !["Flow chart for Area of Triangle"](Attachment-for-summary/Flow-Chart-for-Area-of-Triangle.png)
 
    Contoh Flow Chart untuk mencetak faktor bilangan (Sequential, Branching dan Looping):
-   !["Flow chart cetak faktor bilangan"](Screenshot/flow-chart-cetak-faktor-bilangan.png)
-
-   
+   !["Flow chart cetak faktor bilangan"](Attachment-for-summary/flow-chart-cetak-faktor-bilangan.png)   
