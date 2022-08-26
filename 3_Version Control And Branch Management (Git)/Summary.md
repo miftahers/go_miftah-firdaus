@@ -1,14 +1,8 @@
-# resume
-
-Nama          : Miftah Firdaus ||  
-Universitas   : Universitas Pendidikan Indonesia ||  
-Email         : miftahers@gmail.com ||  
-Materi        : Version Control and Branch Management Git ||
-Tanggal       : 23-Agustus-22 ||
-
-Github => Version Control System (VCS)
+# Version Control and Branch Management (Git)
+Miftah Firdaus (miftahers@gmail.com) - 23-Agustus-22 ||
 
 # introduction
+Github => Version Control System (VCS)
 
 File yang disimpan di github disimpan dalam bentuk `repositori` atau `repo`
 Setiap repositori dapat dibuat di website, cmd, atau terminal vscode.

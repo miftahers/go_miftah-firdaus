@@ -1,0 +1,50 @@
+package algorithm
+
+import "fmt"
+
+func main() {
+
+	// Identifikasi Bilangan Prima
+	var nilai int
+	var bilangan bool
+	bilangan = true
+	fmt.Println("=== Identifikasi Bilangan Prima ===")
+	fmt.Print("Masukan angka:")
+	fmt.Scan(&nilai)
+	// 1
+	if nilai == 0 || nilai == 1 {
+		bilangan = false
+	} else {
+		// 2
+		for i := 2; i <= nilai/2; i++ {
+			// 3
+			if nilai%i == 0 {
+				bilangan = false
+				break
+			}
+		}
+	}
+
+	if bilangan == true {
+		fmt.Println("Bilangan Prima")
+	} else {
+		fmt.Println("Bukan Bilangan Prima")
+	}
+
+	// Lampu
+	var N int
+	var jumlahFaktor int
+	jumlahFaktor = 0
+	fmt.Print("Masukan jumlah lampu:")
+	fmt.Scan(&N)
+	for i := 1; i <= N; i++ {
+		if N%i == 0 {
+			jumlahFaktor++
+		}
+	}
+	if jumlahFaktor%2 == 0 {
+		fmt.Println("Lampu Tidak Menyala")
+	} else {
+		fmt.Println("Lampu Menyala")
+	}
+}
