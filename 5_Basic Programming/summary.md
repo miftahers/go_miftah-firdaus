@@ -82,46 +82,34 @@
   
 # Looping
 
-  # LOOPING BIASA
-  for `<condition>` {
-    `<lakukan sesuatu>`
-  }
-  contoh:
-  for `i := 0; i < 5; i++` {
-    `fmt.Println(i)`
-  }
+  `LOOPING BIASA`
 
-  # LOOPING dengan Continue dan Break
-  for `<condition>` {
-    if `<condition>` {
-      continue
+    for i := 0; i < 5; i++ {
+    fmt.Println(i)
     }
-    if `<condition>` {
-      break
-    }
-  }
 
-  contoh:
-  for i := 0; i <= 4; i++ {
-    if i > 0 {
-      fmt.Println ("i lebih dari 0")
-      continue
-    }
-    if i > 3 {
-      fmt.Println ("i lebih dari 3")
-      break
-    }
-  }
+  `LOOPING dengan Continue dan Break`
 
-  # LOOPING OVER STRING
+    for i := 0; i <= 4; i++ {
+      if i > 0 {
+        fmt.Println ("i lebih dari 0")
+        continue
+      }
+      if i > 3 {
+        fmt.Println ("i lebih dari 3")
+        break
+      }
+    }
 
-  sentence := "kata"
-  // 1 - len
-  for i := 0; i < len(sentence); i++ {
-    fmt.Printf(string(sentence[i]) + " ")
-  }  
-  
-  // 2 - range
-  for pos, char := range sentence {
-    fmt.Printf("character %c start at byte position %d", char, pos)
-  }
+  `LOOPING OVER STRING`
+
+    sentence := "kata"
+    // 1 - len
+    for i := 0; i < len(sentence); i++ {
+      fmt.Printf(string(sentence[i]) + " ")
+    }  
+    
+    // 2 - range
+    for pos, char := range sentence {
+      fmt.Printf("character %c start at byte position %d", char, pos)
+    }
