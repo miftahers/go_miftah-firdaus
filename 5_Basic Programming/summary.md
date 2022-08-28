@@ -18,12 +18,12 @@
 # Variables and Types
 
   Variables:
-    - Booleans: true | false
-    - numeric:
-      - Int(or uint for positive num only)(int8/rune,int16,int32,int64)
-      - Float32 & Float64
-      - Complex64 & complex128
-    - String
+  - Booleans
+  - Numeric
+    - int/uint (int8,int16,int32,int64,rune, dsb)
+    - Float (Float32, Float64)
+    - Complex (Complex64, Complex128)
+  - String
   
   `Variable Declaration`
     
