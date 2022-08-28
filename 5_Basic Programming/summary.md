@@ -17,41 +17,55 @@
 
 # Variables and Types
 
-  Variables:
-    - Booleans: true | false
+  `Variables`
+    - `Booleans`: true | false
     - numeric:
-      - Int(or `uint` for positive num only)(int8/rune,int16,int32,int64)
-      - Float32 & Float64
-      - Complex64 & complex128
-    - String
-  Variable Declaration:
-    > `var <variable_name> <data_type>`
-      - var age int
-      - var month string
-    > `var <variable_name> <data_type> = <value>`
-      - var age int = 20
-      - var prima bool = true
-      - var name string = "Miftah"
-    > `var <list_variable_name> <data_type>`
-      - var name, address string
-    > `var <list_variable_name> <data_type> = <value>`
-      - var name, city string = "Miftah", "Sumedang"
-    > `<variable_name> := <value>`
-      - name := "Miftah"
-  Constant:
-  - Single Constant: `const pi float64 = 3.14`
-  - multple Constant:
-    `const (`
-      `pi float64 = 3.14`
-      `pi2`
-      `age = 20`
-    `)`
+      - `Int`(or `uint` for positive num only)(`int8`/`rune`,`int16`,`int32`,`int64`)
+      - `Float32` & `Float64`
+      - `Complex64` & `complex128`
+    - `String`
+  `Variable Declaration`
+    
+    // var <variable_name> <data_type>
+      var age int
+      var month string
+    // var <variable_name> <data_type> = <value>
+      var age int = 20
+      var prima bool = true
+      var name string = "Miftah"
+    // var <list_variable_name> <data_type>
+      var name, address string
+    // var <list_variable_name> <data_type> = <value>
+      var name, city string = "Miftah", "Sumedang"
+    // <variable_name> := <value>
+      name := "Miftah"
+
+  `Single Constant`
+  
+      const pi float64 = 3.14
+
+  `multple Constant`
+   
+      const (
+        pi float64 = 3.14
+        pi2
+        age = 20
+      )
 
 # Operator Expression
-  Operator
-  `+`,`-`,`*`,`/`,`%`
-  String Operation:
-  `helloWorld := "Hello" + " " + "world"`
+  
+  `Operator`
+
+    a := b + c //Summation
+    a := b - c //Substraction
+    a := b * c //Multiplication
+    a := b / c //Distribution
+    a := b % c //Modulus
+  
+  `String Operation`
+    
+    helloWorld := "Hello" + " " + "world"
+    fmt.Println("Hallo" + " " + "Dunia")
 
 # Branching
 
