@@ -17,7 +17,7 @@
 
 # Variables and Types
 
-  `Variables`
+  Variables:
     - Booleans: true | false
     - numeric:
       - Int(or uint for positive num only)(int8/rune,int16,int32,int64)
