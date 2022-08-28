@@ -57,9 +57,9 @@
 
   `If-else`
   
-    if `a>2` {
+    if a>2 {
       fmt.Println(a, " is more than 2")
-    } else if `a>5` {
+    } else if a>5 {
       fmt.Println(a, " is more than 2 and 5")
     } else {
       fmt.Println(a, " is below 2")
@@ -67,8 +67,8 @@
 
   `Switch`
     
-    `a` := 0
-    switch `a` {
+    a := 0
+    switch a {
       case 0:
         fmt.Println(a, "is false")
         fallthrough
