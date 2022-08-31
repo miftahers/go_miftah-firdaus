@@ -119,7 +119,7 @@ Dalam pembuatan sebuah algoritma atau langkah untuk melakukan perhitungan komput
 
 # Array
 
-Array adalah `data struktur` yang digunakan untuk menyimpan lebih dari satu data pada satu variabel dengan `tipe data sejenis` dan harus `dideklarasikan kapasitasnya`.
+Array adalah `container type` yang digunakan untuk menyimpan lebih dari satu data pada satu variabel dengan `tipe data sejenis` dan harus `dideklarasikan kapasitasnya`.
 
 `cara mendeklarasikan array`
     
@@ -159,7 +159,7 @@ Array adalah `data struktur` yang digunakan untuk menyimpan lebih dari satu data
 
 # Slice
 
-Slice adalah `struktur data` yang digunakan untuk menyimpan lebih dari satu data pada satu variabel dengan `tipe data sejenis` dan `kapasitas nya tidak perlu dideklarasikan`. 
+Slice adalah `container type` yang digunakan untuk menyimpan lebih dari satu data pada satu variabel dengan `tipe data sejenis` dan `kapasitas nya tidak perlu dideklarasikan`. 
 
 Slice `bukan`lah `array yang dinamis` tetapi slice adalah `tipe yang menggunakan referensi.` Jadi, jika kita menyalin nilai dari array untuk dijadikan slice maka apabila nilai array nya dirubah maka nilai dari slice yang telah dibuat dari array tersebut akan ikut berubah.
 
@@ -196,7 +196,7 @@ Slice memiliki panjang(`len`) dan kapasitas(`cap`). Panjang/length merupakan ban
 
 # Map
 
-Map adalah `struktur data` yang digunakan untuk menyimpan lebih dari satu data pada sebuah variabel yang memiliki `key` dan `value` yang keduanya saling berkaitan dimana `key` itu memiliki sifat unik. 
+Map adalah `container type` yang digunakan untuk menyimpan lebih dari satu data pada sebuah variabel yang memiliki `key` dan `value` yang keduanya saling berkaitan dimana `key` itu memiliki sifat unik. 
 
 Contoh relasi antara `key` dan `value`
   
