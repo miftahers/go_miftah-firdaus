@@ -18,7 +18,7 @@ func munculSekali(angka string) []int {
 	}
 
 	sort.Ints(slice)
-	fmt.Println("Sorted: ", slice)
+	fmt.Println("before: ", slice)
 
 	var n int = len(slice)
 	for i := 0; i < n-1; i++ {
