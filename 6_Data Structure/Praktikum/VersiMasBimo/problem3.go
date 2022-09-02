@@ -1,4 +1,4 @@
-package main
+package problem3
 
 import "fmt"
 
@@ -11,17 +11,16 @@ func main() {
 }
 
 func PairSum(arr []int, target int) []int {
-	var res []int
-	for i := 0; i < len(arr); i++ {
-		for j := 0; j < len(arr); j++ {
-			// TODO bandingkan penjumlahan arr[i] dan arr[j] dengan target
-			if sum := arr[i] + arr[j]; sum == target {
-				// jika i == j jangan append karena index yang sama
-				if i != j {
-					res = append(res, i)
-				}
-			}
+	// TODO temp var target value penjumlahan
+	temp := make(map[int]int)
+
+	// TODO loop over slice
+	for i, number := range arr {
+		// TODO target == number
+		if key, exist := temp[target-number]; exist {
+			return []int{key, i}
 		}
+		temp[number] = i
 	}
-	return res
+	return nil
 }
