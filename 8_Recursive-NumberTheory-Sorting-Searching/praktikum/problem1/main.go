@@ -25,22 +25,30 @@ func primeNumber(number int) bool {
 }
 
 func primeX(number int) int {
+	// TODO buat var lop []int untuk menyimpan slice bilangan prima
 	var lop []int
+	// TODO jika kurang dari nol return -1 yang berarti input harus uint
 	if number <= 0 {
 		return -1
 	} else {
+		// TODO buat var lim yang berisi kuadrat dari number + 1 untuk menjadi batas pengecekan nilai int
 		lim := number*number + 1
+		// TODO loop dari angka 2 sampai dengan lim dan i++ untuk pengecekan nilai i selanjutnya
 		for i := 2; i <= lim; i++ {
+			// TODO  cek apakah i adalah bilangan prima, jika iya append var lop
 			if primeNumber(i) == true {
 				lop = append(lop, i)
 			}
+			//TODO jika panjang lop sebesar nilai inputan maka stop/break looping untuk tidak melakukan perulangan yang tak perlu
 			if len(lop) == number {
 				break
 			}
 		}
+		// TODO jika panjang lop kurang dari 1 return -1 yang berarti tidak ditemukan bilangan prima
 		if len(lop) < 1 {
 			return -1
 		} else {
+			// TODO jika panjang loop lebih dari sama dengan 1 return lop[number-1]
 			return lop[number-1]
 		}
 	}

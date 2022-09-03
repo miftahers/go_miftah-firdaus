@@ -3,10 +3,14 @@ package main
 import "fmt"
 
 func fibonacci(number int) int {
+	// Jika number sama dengan 0 kembalikan nol
 	if number == 0 {
 		return 0
+		// Jika number sama dengan 1 kembalikan 1
 	} else if number == 1 {
 		return 1
+		// Jika number bukan 0 atau 1 return fungsi fibonacci(number-1) + fibonacci(number-2)
+		// Nantinya akan melakukan pengecekan berulang dan menjumlahkan 2 nilai sebelum number
 	} else {
 		return fibonacci(number-1) + fibonacci(number-2)
 	}
