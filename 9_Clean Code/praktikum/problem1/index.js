@@ -17,3 +17,18 @@ class userservice {
 */
 
 // Yang benar
+
+class User{
+  id;
+  username;
+  password;
+}
+class UserService {
+  user[] users = [];
+  user[] GetAllUsers(){
+    return users
+  }
+  User GetUserById(userId){
+    return this.users.filter(userId);
+  }
+}

@@ -1,5 +1,5 @@
 // PROBLEM 2 - REWRITE
-
+/*
 class kendaraan {
 	var totalroda = 0;
 	var kecepatanperjam = 0;
@@ -23,4 +23,29 @@ void main () {
 
 	mobillamban = new mobil();
 	mobillamban.berjalan();
+}
+*/
+
+class Kendaraan {
+	roda = 0;
+	kecepatan = 0;
+}
+
+class Mobil extends Kendaraan {
+	berjalan(){
+		this.kecepatan += 10;
+	}
+}
+
+function main() {
+	mobilCepat = new Mobil()
+	mobilCepat.berjalan()
+	mobilCepat.berjalan()
+	mobilCepat.berjalan()
+
+	mobilLambat = new Mobil()
+	mobilLambat.berjalan()
+
+	console.log(mobilCepat.kecepatan)
+	console.log(mobilLambat.kecepatan)
 }
