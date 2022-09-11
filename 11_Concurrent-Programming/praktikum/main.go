@@ -42,6 +42,7 @@ func main() {
 		mMutex.Unlock()
 		wg.Done()
 	}
+
 	clh := func() {
 		mMutex.Lock()
 		for i := len(alphabet) / 2; i < len(alphabet); i++ {
@@ -53,6 +54,7 @@ func main() {
 
 	wg.Add(1)
 	go cfh()
+
 	wg.Add(1)
 	go clh()
 
