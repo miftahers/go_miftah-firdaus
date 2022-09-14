@@ -12,7 +12,7 @@ Detail ERD: [Klik Disini](https://www.lucidchart.com/pages/er-diagrams)
 # DDL (Data Definition Language)
 DDL atau Data Definition Language sebenarnya terdiri dari perintah SQL yang dapat digunakan untuk menentukan skema database. Ini hanya berkaitan dengan deskripsi skema database dan digunakan untuk membuat dan memodifikasi struktur objek database dalam database. 
 Daftar perintah DDL: 
-- CREATE: Perintah ini digunakan untuk membuat database atau objeknya (seperti tabel, indeks, fungsi, tampilan, prosedur penyimpanan, dan pemicu). 
+- CREATE: Perintah ini digunakan untuk membuat database atau objeknya (seperti tabel, indeks, fungsi, tampilan, prosedur penyimpanan, dan TRIGGER). 
 - DROP: Perintah ini digunakan untuk menghapus objek dari database. 
 - ALTER: Ini digunakan untuk mengubah struktur database. 
 - TRUNCATE: Ini digunakan untuk menghapus semua rekaman dari tabel, termasuk semua spasi yang dialokasikan untuk rekaman akan dihapus. 
