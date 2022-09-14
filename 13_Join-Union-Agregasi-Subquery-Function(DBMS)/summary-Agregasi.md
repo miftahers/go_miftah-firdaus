@@ -215,3 +215,45 @@ Daftar agregasi:
     GROUP BY manager_id
     HAVING direct_reports >= 5;
   
+  `SQL HAVING with SUM function example`
+
+    SELECT 
+        department_id, SUM(salary)
+    FROM
+        employees
+    GROUP BY department_id
+    HAVING SUM(salary) BETWEEN 20000 AND 30000
+    ORDER BY SUM(salary);
+
+  `SQL HAVING with MIN function example`
+
+    SELECT
+      e.department_id,
+      department_name,
+      MIN(salary)
+    FROM
+      employees e
+    INNER JOIN departments d ON d.department_id = e.department_id
+    GROUP BY
+      e.department_id
+    HAVING
+      MIN(salary) >= 10000
+    ORDER BY
+      MIN(salary);
+
+  `SQL HAVING clause with AVG function example`
+
+    SELECT
+      e.department_id,
+      department_name,
+      ROUND(AVG(salary), 2)
+    FROM
+      employees e
+    INNER JOIN departments d ON d.department_id = e.department_id
+    GROUP BY
+      e.department_id
+    HAVING
+      AVG(salary) BETWEEN 5000
+    AND 7000
+    ORDER BY
+      AVG(salary);
