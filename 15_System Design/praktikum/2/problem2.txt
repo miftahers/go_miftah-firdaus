@@ -1,0 +1,4 @@
+Mysql: select * from user;
+Redis: GET user
+neo4j: RETURN *
+cassandra: SELECT * FROM user;
