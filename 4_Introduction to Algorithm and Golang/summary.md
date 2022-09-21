@@ -1,12 +1,12 @@
 # Introduction to Algorithm and Golang
 Miftah Firdaus (miftahers@gmail.com) -26-Agustus-22
 
-# Karakteristik Algorithm
+## Karakteristik Algorithm
 - Memiliki batas (awal dan akhir)
 - Intruksi terdefinisi dengan baik
 - Efektif dan efisien
 
-# Algoritma Dasar
+## Algoritma Dasar
 1. Sequential
    Urutan dalam menyusun langkah-langkah untuk menyelsaikan suatu masalah.
 2. Branching
@@ -14,7 +14,7 @@ Miftah Firdaus (miftahers@gmail.com) -26-Agustus-22
 3. Looping
    Melakukan aksi secara berulang sampai kondisi tertentu terpenuhi (Looping; Example: For, Do-While, While-Do)
 
-# Cara menuliskan algoritma
+## Cara menuliskan algoritma
 1. Pseudo Code
    Pseudo Code adalah deskripsi bahasa sederhana yang bisa kita gunakan untuk menuangkan sebuah ide algoritma.
    

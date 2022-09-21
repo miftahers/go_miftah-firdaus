@@ -35,15 +35,15 @@ Familiarizing these concept would greatly benefit in understanding distributed s
 Karakteristik dari distributed system:
 1. Scalability
 
-      `Scaling`
+  `Scaling`
 
-      Vertical Scale    : Increase Ability of system
+  Vertical Scale    : Increase Ability of system
 
-      Horizontal Scale  : Duplikasi Server atau Tambah Server
+  Horizontal Scale  : Duplikasi Server atau Tambah Server
 
-      Jika kita masih memiliki kesempatan untuk meningkatkan kemampuan dari sistem yang kita bangun, gunakan vertical scale, tidak ada perubahan pada code kita.
+  Jika kita masih memiliki kesempatan untuk meningkatkan kemampuan dari sistem yang kita bangun, gunakan vertical scale, tidak ada perubahan pada code kita.
 
-      Jika kita tidak bisa memprediksi atau ada kemungkinan mengamalami peningkatan penggunaan layanan kita yang sangat cepat dan besar, gunakan horizontal scale atau tambahlah server, ada kemungkinan perlu merubah code.
+  Jika kita tidak bisa memprediksi atau ada kemungkinan mengamalami peningkatan penggunaan layanan kita yang sangat cepat dan besar, gunakan horizontal scale atau tambahlah server, ada kemungkinan perlu merubah code.
 
 2. Reliability
   Artinya system dari layanan kita harus bisa tetap berjalan ketika terjadi kegagalan seperti server down. Salah satu cara supaya bisa reliability adalah dengan memiliki multiple server.

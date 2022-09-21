@@ -1,7 +1,7 @@
 # Version Control and Branch Management (Git)
 Miftah Firdaus (miftahers@gmail.com) - 23-Agustus-22 ||
 
-# introduction
+## introduction
 Github => Version Control System (VCS)
 
 File yang disimpan di github disimpan dalam bentuk `repositori` atau `repo`
@@ -9,7 +9,7 @@ Setiap repositori dapat dibuat di website, cmd, atau terminal vscode.
 Untuk menjalankan git di komputer harus meng-install dulu git lewat `https://git-for-windows.github.io/`
 Cek git apakah sudah terinstall bisa dengan cek versi `git --version` di terminal atau cmd
 
-# config awal
+## config awal
 
 Untuk menggunakan fitur-fitur git di terminal seperti mengelola `repo` harus mendaftarkan username dan email kita yang terdaftar di github di terminal
 Caranya:
@@ -17,7 +17,7 @@ Caranya:
 `git config --global user.email "email"`
 Setelah buat `repo` di website git, pindahkan ke komputer dengan `git clone https://github.com/username/nama_repositori`
 
-# basic git
+## basic git
 
 Untuk mengunggah/menyimpan perubahan file kita ke github lakukan cara berikut ini:
 
@@ -27,7 +27,7 @@ Untuk mengunggah/menyimpan perubahan file kita ke github lakukan cara berikut in
    `git commit -m "<pesan yang ingin disampaikan mengenai perubahan file>"`
 3. Push`perubahan yang telah di commit ke repo dengan: `git push origin <nama_branch>`Untuk melihat perubahan apa saja yang sudah dibuat gunakan: `git diff`||`git diff --staged`Untuk mengunduh perubahan yang dilakukan orang lain bisa dilakukan dengan: `git fetch`||`git pull origin <nama_branch>`
 
-# stash/temp
+## stash/temp
 
 Untuk menyimpan sementara perubahan yang sedang dilakukan (dihitung dari pembaruan terakhir yang diunduh) lakukan:
 `git stash`
