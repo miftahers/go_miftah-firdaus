@@ -362,3 +362,139 @@ Perlu diingat, setiap ada perubahan pada file .go, go run harus dipanggil lagi.
 
 Untuk menghentikan web server, tekan CTRL+C pada terminal atau CMD, dimana pengeksekusian aplikasi berlangsung.
 
+
+
+# Web Service API Server
+
+Web Service API adalah sebuah web yang menerima request dari client dan menghasilkan response, biasa berupa JSON/XML.
+
+## Membuat API dengan Method GET
+Method GET paling sering digunakan untuk menampilkan sebuah data json. Maka saya akan berikan contoh pertama dengan method GET.
+
+Method GET dapat di akses melalui browser atau tools api lainnya. Selain itu juga dapat di ambil dari website lainnya, dengan catatan harus mengaktifkan cors.
+```go
+package main
+
+import (
+  "encoding/json"
+  "fmt"
+  "log"
+  "net/http"
+)
+
+type Movie struct {
+  ID    int    `json:"id"`
+  Title string `json:"title"`
+  Year  int    `json:"year"`
+}
+
+func Movies() []Movie {
+  movs := []Movie{
+    {1, "Spider-Man", 2002},
+    {2, "John Wick", 2014},
+    {3, "Avengers", 2018},
+    {4, "Logan", 2017},
+  }
+  return movs
+}
+
+// GetMovies
+func getMovies(w http.ResponseWriter, r *http.Request) {
+  if r.Method == "GET" {
+    movies := Movies()
+    dataMovies, err := json.Marshal(movies)
+    
+    if err != nil {
+      http.Error(w, err.Error(), http.StatusInternalServerError)
+    }
+
+    w.Header().Set("Content-Type", "application/json")
+    w.WriteHeader(http.StatusOK)
+    w.Write(dataMovies)
+    return
+  }
+  http.Error(w, "ERROR....", http.StatusNotFound)
+}
+
+func main() {
+  http.HandleFunc("/movies", getMovies)
+  fmt.Println("server running at http://localhost:8080")
+
+  if err := http.ListenAndServe(":8080", nil); err != nil {
+    log.Fatal(err)
+  }
+}
+```
+Setelah web server sudah berjalan, web service yang telah dibuat perlu untuk di-tes. Salah satu tools yang digunakan untuk mengecek web service API adalah postman
+
+Hasilnya :
+![](https://blog.sanbercode.com/wp-content/uploads/2021/09/materi-go-hari14-1.png)
+
+
+Perhatikan kode di atas, terdapat http server yang mengalankan fungsi GetMovies(). Dimana di dalam fungsi tersebut akan memeriksa dahulu method yang di akses, apabila method itu GET maka akan di teruskan ke baris kode berikutnya.
+
+Kode baris berikutnya memanggil method Movies(), dimana nilai balik dari fungsi tersebut adalah data array dari struct Movie. Setelah itu maka data tersebut di ubah format ke dalam tipe byte dengan sintaks marshal.
+
+Untuk menampilkan ke halaman browser menggunakan kode w.Write(dataMovie). Agar Format JSON harus menambahkan sintaks w.Header().Set("Content-Type", "application/json").
+
+Sedangkan untuk sintaks w.WriteHeader(http.StatusOK) digunakan untuk memeberikan kode status header. Jika belum paham mengenai kode status http bisa membaca di https://restfulapi.net/http-status-codes/.
+
+## Membuat API dengan Method POST
+Kalau menggunakan Method POST ini tidak bisa langsung di akses di browser, tapi dapat menggunakan form HTML atau Postman sebagai tools. Di karenakan kita tidak membuat website namun membuat API Web Service dengan Golang maka untuk Uji Coba saya menggunakan `Postman`.
+
+Sebelum ke kode program ada hal yang perlu kita pahami tentang input data post. Secara umum dan sering di pakai dapat menggunakan 2 macam cara untuk menerima data yaitu dengan form dan teks json, kedua hal ini biasa di sebut `content type`. Cara menerima datanya pun berbeda.
+
+```go
+// PostMovie
+func PostMovie(w http.ResponseWriter, r *http.Request) {
+  w.Header().Set("Content-Type", "application/json")
+  var Mov Movie
+  if r.Method == "POST" {
+    if r.Header.Get("Content-Type") == "application/json" {
+      // parse dari json
+      decodeJSON := json.NewDecoder(r.Body)
+      if err := decodeJSON.Decode(&Mov); err != nil {
+        log.Fatal(err)
+      }
+    } else {
+      // parse dari form
+      getID := r.PostFormValue("id")
+      id, _ := strconv.Atoi(getID)
+      title := r.PostFormValue("title")
+      getYear := r.PostFormValue("year")
+      year, _ := strconv.Atoi(getYear)
+      Mov = Movie{
+         ID:    id,
+         Title: title,
+         Year:  year,
+      }
+    }
+
+    dataMovie, _ := json.Marshal(Mov) // to byte
+    w.Write(dataMovie)                // cetak di browser
+    return
+  }
+
+  http.Error(w, "NOT FOUND", http.StatusNotFound)
+  return
+}
+
+// pada function main
+
+http.HandleFunc("/post_movie", PostMovie)
+```
+Percobaan pada kode diatas dilakukan 2 kali yaitu dengan menggunakan raw data json dan form-data.
+
+Uji coba dengan JSON
+![](https://blog.sanbercode.com/wp-content/uploads/2021/09/materi-go-hari14-2.png)
+
+
+Uji coba dengan form-data
+![](https://blog.sanbercode.com/wp-content/uploads/2021/09/materi-go-hari14-3.png)
+
+
+Routing "/post_movie" mengakses fungsi dengan nama PostMovie. Sama seperti hal nya dengan method GET untuk memeriksa method yang di akses, namun di ganti dengan method POST.
+
+Untuk menangkap tipe konten yang di inputkan dapat menggunakan kode `r.Header.Get(“Content-Type”) `. Jika tipe tersebut json untuk menerima data harus menggunakan tipe data maupun struct di tandai dengan kode `decodeJSON := json.NewDecoder(r.Body)` dan decodeJSON.Decode(&Mov) agar masuk struct dengan nama Mahasiswa.
+
+Jika data tersebut bukan json maka untuk mengambil data nya dapat menggunakan sintaks PostFormValue dan di dalam nya di tulis nama field nya. Data kembalian terhadap fungsi itu yaitu string, apabila ingin mengubah ke bentuk tipe data integer dapat menggunakan manipulasi string yaitu Atoi.
