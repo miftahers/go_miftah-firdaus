@@ -1,0 +1,42 @@
+{
+	"info": {
+		"_postman_id": "13865605-8017-43ba-b28c-78f9dec8dcb3",
+		"name": "3",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20178478"
+	},
+	"item": [
+		{
+			"name": "sepulsa-get",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "sepulsa-post",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "sepulsa-put",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "sepulsa-delete",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
