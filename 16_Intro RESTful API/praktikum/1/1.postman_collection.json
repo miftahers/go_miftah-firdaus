@@ -10,7 +10,41 @@
 			"name": "newsapi-1",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "https://newsapi.org/v2/everything?q=apple&from=2022-09-22&to=2022-09-22&sortBy=popularity&apiKey=bba5cfef66c04bde8614913978fa033b",
+					"protocol": "https",
+					"host": [
+						"newsapi",
+						"org"
+					],
+					"path": [
+						"v2",
+						"everything"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "apple"
+						},
+						{
+							"key": "from",
+							"value": "2022-09-22"
+						},
+						{
+							"key": "to",
+							"value": "2022-09-22"
+						},
+						{
+							"key": "sortBy",
+							"value": "popularity"
+						},
+						{
+							"key": "apiKey",
+							"value": "bba5cfef66c04bde8614913978fa033b"
+						}
+					]
+				}
 			},
 			"response": []
 		},
@@ -18,7 +52,37 @@
 			"name": "newsapi-2",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "https://newsapi.org/v2/everything?q=tesla&from=2022-08-23&sortBy=publishedAt&apiKey=bba5cfef66c04bde8614913978fa033b",
+					"protocol": "https",
+					"host": [
+						"newsapi",
+						"org"
+					],
+					"path": [
+						"v2",
+						"everything"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "tesla"
+						},
+						{
+							"key": "from",
+							"value": "2022-08-23"
+						},
+						{
+							"key": "sortBy",
+							"value": "publishedAt"
+						},
+						{
+							"key": "apiKey",
+							"value": "bba5cfef66c04bde8614913978fa033b"
+						}
+					]
+				}
 			},
 			"response": []
 		},
@@ -26,7 +90,33 @@
 			"name": "newsapi-3",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=bba5cfef66c04bde8614913978fa033b",
+					"protocol": "https",
+					"host": [
+						"newsapi",
+						"org"
+					],
+					"path": [
+						"v2",
+						"top-headlines"
+					],
+					"query": [
+						{
+							"key": "country",
+							"value": "us"
+						},
+						{
+							"key": "category",
+							"value": "business"
+						},
+						{
+							"key": "apiKey",
+							"value": "bba5cfef66c04bde8614913978fa033b"
+						}
+					]
+				}
 			},
 			"response": []
 		},
@@ -34,7 +124,29 @@
 			"name": "newsapi-4",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=bba5cfef66c04bde8614913978fa033b",
+					"protocol": "https",
+					"host": [
+						"newsapi",
+						"org"
+					],
+					"path": [
+						"v2",
+						"top-headlines"
+					],
+					"query": [
+						{
+							"key": "sources",
+							"value": "techcrunch"
+						},
+						{
+							"key": "apiKey",
+							"value": "bba5cfef66c04bde8614913978fa033b"
+						}
+					]
+				}
 			},
 			"response": []
 		},
@@ -42,7 +154,29 @@
 			"name": "newsapi-5",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "https://newsapi.org/v2/everything?domains=wsj.com&apiKey=bba5cfef66c04bde8614913978fa033b",
+					"protocol": "https",
+					"host": [
+						"newsapi",
+						"org"
+					],
+					"path": [
+						"v2",
+						"everything"
+					],
+					"query": [
+						{
+							"key": "domains",
+							"value": "wsj.com"
+						},
+						{
+							"key": "apiKey",
+							"value": "bba5cfef66c04bde8614913978fa033b"
+						}
+					]
+				}
 			},
 			"response": []
 		}

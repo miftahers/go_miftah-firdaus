@@ -10,7 +10,20 @@
 			"name": "swapi-1",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "https://swapi.dev/api/people/1",
+					"protocol": "https",
+					"host": [
+						"swapi",
+						"dev"
+					],
+					"path": [
+						"api",
+						"people",
+						"1"
+					]
+				}
 			},
 			"response": []
 		},
@@ -18,7 +31,20 @@
 			"name": "swapi-2",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "https://swapi.dev/api/planets/1",
+					"protocol": "https",
+					"host": [
+						"swapi",
+						"dev"
+					],
+					"path": [
+						"api",
+						"planets",
+						"1"
+					]
+				}
 			},
 			"response": []
 		},
@@ -26,7 +52,20 @@
 			"name": "swapi-3",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "https://swapi.dev/api/films/3",
+					"protocol": "https",
+					"host": [
+						"swapi",
+						"dev"
+					],
+					"path": [
+						"api",
+						"films",
+						"3"
+					]
+				}
 			},
 			"response": []
 		},
@@ -34,7 +73,20 @@
 			"name": "swapi-4",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "https://swapi.dev/api/films/6",
+					"protocol": "https",
+					"host": [
+						"swapi",
+						"dev"
+					],
+					"path": [
+						"api",
+						"films",
+						"6"
+					]
+				}
 			},
 			"response": []
 		},
@@ -42,7 +94,20 @@
 			"name": "swapi-5",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "https://swapi.dev/api/people/12",
+					"protocol": "https",
+					"host": [
+						"swapi",
+						"dev"
+					],
+					"path": [
+						"api",
+						"people",
+						"12"
+					]
+				}
 			},
 			"response": []
 		}
