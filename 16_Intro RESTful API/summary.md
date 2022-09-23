@@ -483,13 +483,18 @@ func PostMovie(w http.ResponseWriter, r *http.Request) {
 
 http.HandleFunc("/post_movie", PostMovie)
 ```
+
+
 Percobaan pada kode diatas dilakukan 2 kali yaitu dengan menggunakan raw data json dan form-data.
 
+
 Uji coba dengan JSON
+
 ![](https://blog.sanbercode.com/wp-content/uploads/2021/09/materi-go-hari14-2.png)
 
 
 Uji coba dengan form-data
+
 ![](https://blog.sanbercode.com/wp-content/uploads/2021/09/materi-go-hari14-3.png)
 
 
