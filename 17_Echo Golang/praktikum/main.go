@@ -28,32 +28,27 @@ func GetUsersController(c echo.Context) error {
 func GetUserController(c echo.Context) error {
 	// your solution here
 	id, _ := strconv.Atoi(c.Param("id"))
-	var result User
+	var index int
 	for i := range users {
 		user := users[i]
 		if id == user.Id {
-			result = user
+			index = i
 		}
 	}
 
 	return c.JSON(http.StatusOK, map[string]interface{}{
 		"messages": "success get user by id: " + strconv.Itoa(id),
-		"user":     result,
+		"user":     users[index],
 	})
 }
 
 func DeleteUserController(c echo.Context) error {
 	// your solution here
 	id, _ := strconv.Atoi(c.Param("id"))
-	tempUsers := users
 	ok := false
 	for i := range users {
-		if id == tempUsers[i].Id {
-			for j := i; j != len(tempUsers); j++ {
-				tempUsers[j].Name = tempUsers[j+1].Name
-				tempUsers[j].Email = tempUsers[j+1].Email
-				tempUsers[j].Password = tempUsers[j+1].Password
-			}
+		if id == users[i].Id {
+			users = append(users[:i], users[i+1:]...)
 			ok = true
 			break
 		}
@@ -64,11 +59,6 @@ func DeleteUserController(c echo.Context) error {
 			"messages": "Data with id: " + strconv.Itoa(id) + " not found",
 		})
 	} else {
-		if len(users) > 1 {
-			users = tempUsers[:len(tempUsers)-1]
-		} else {
-			users = tempUsers
-		}
 		return c.JSON(http.StatusOK, map[string]interface{}{
 			"messages": "Data with id: " + strconv.Itoa(id) + " deleted",
 		})
