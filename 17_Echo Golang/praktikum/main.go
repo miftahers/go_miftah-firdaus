@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"net/http"
 	"strconv"
 
@@ -16,7 +17,7 @@ type User struct {
 
 var users []User
 
-// get all users
+// GetUsersController -> get all users
 func GetUsersController(c echo.Context) error {
 	return c.JSON(http.StatusOK, map[string]interface{}{
 		"messages": "success get all users",
@@ -24,7 +25,7 @@ func GetUsersController(c echo.Context) error {
 	})
 }
 
-// get user by id
+// GetUserController -> get user by id
 func GetUserController(c echo.Context) error {
 	// your solution here
 	id, _ := strconv.Atoi(c.Param("id"))
@@ -88,10 +89,14 @@ func UpdateUserController(c echo.Context) error {
 	})
 }
 
-// create new user
+// CreateUserController -> create new user
 func CreateUserController(c echo.Context) error {
 	user := User{}
-	c.Bind(&user)
+	err := c.Bind(&user)
+	if err != nil {
+		fmt.Println("ini error")
+		return c.String(404, "error")
+	}
 
 	if len(users) == 0 {
 		user.Id = 1
@@ -109,17 +114,18 @@ func CreateUserController(c echo.Context) error {
 func main() {
 	e := echo.New()
 	//routing with query parameter
-	e.GET("/users", GetUsersController)
-	e.POST("/users", CreateUserController)
+	v1 := e.Group("/v1")
+	v1.GET("/users", GetUsersController)
+	v1.POST("/users", CreateUserController)
 
 	//get user by id
-	e.GET("/users/:id", GetUserController)
+	v1.GET("/users/:id", GetUserController)
 
 	//delete user by id
-	e.DELETE("/users/:id", DeleteUserController)
+	v1.DELETE("/users/:id", DeleteUserController)
 
 	//update user (PUT) information by id
-	e.PUT("/users/:id", UpdateUserController)
+	v1.PUT("/users/:id", UpdateUserController)
 
 	// start the server, and log if it fails
 	e.Logger.Fatal(e.Start(":8000"))
