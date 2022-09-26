@@ -22,7 +22,7 @@ Minimalist but EXTENSIBLE
 Tutorial pake echo golang:
 1. buat folder `rest`
 2. buat go mod `rest` dengan ketik `go mod init rest` di terminal
-3. inisialisasi echo dengan mengetik `go get -u github.com/labstack/echo/...`
+3. inisialisasi echo dengan mengetik `go get -u github.com/labstack/echo`
 4. buat file main.go
 
 ## Routing dan controller
