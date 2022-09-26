@@ -28,7 +28,10 @@ func GetUsersController(c echo.Context) error {
 // GetUserController -> get user by id
 func GetUserController(c echo.Context) error {
 	// your solution here
-	id, _ := strconv.Atoi(c.Param("id"))
+	id, err := strconv.Atoi(c.Param("id"))
+	if err != nil {
+		return err
+	}
 	var index int
 	for i := range users {
 		user := users[i]
@@ -45,7 +48,10 @@ func GetUserController(c echo.Context) error {
 
 func DeleteUserController(c echo.Context) error {
 	// your solution here
-	id, _ := strconv.Atoi(c.Param("id"))
+	id, err := strconv.Atoi(c.Param("id"))
+	if err != nil {
+		return err
+	}
 	ok := false
 	for i := range users {
 		if id == users[i].Id {
@@ -68,7 +74,10 @@ func DeleteUserController(c echo.Context) error {
 
 func UpdateUserController(c echo.Context) error {
 	// your solution here
-	id, _ := strconv.Atoi(c.Param("id"))
+	id, err := strconv.Atoi(c.Param("id"))
+	if err != nil {
+		return err
+	}
 	name := c.FormValue("name")
 	email := c.FormValue("email")
 	password := c.FormValue("password")
