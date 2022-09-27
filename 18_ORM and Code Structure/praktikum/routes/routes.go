@@ -17,5 +17,13 @@ func New() *echo.Echo {
 	users.PUT("/:id", c.UpdateUserController)
 	users.DELETE("/:id", c.DeleteUserController)
 
+	//router book
+	books := e.Group("/books")
+	books.GET("", c.GetBooksController)
+	books.GET("/:id", c.GetBookController)
+	books.POST("", c.CreateBookController)
+	books.PUT("/:id", c.UpdateBookController)
+	books.DELETE("/:id", c.DeleteBookController)
+
 	return e
 }
