@@ -84,7 +84,14 @@ func DeleteUserController(ctx echo.Context) error {
 	if err := cfg.DB.Delete(&user, id).Error; err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
 	}
+	/*
+		untuk recover data abis soft delete tinggal set column deleted_at ke NULL
 
+		to delete permanently
+		if err := cfg.DB.Unscoped().Delete(&user, id).Error; err != nil {
+			return echo.NewHTTPError(http.StatusBadRequest, err.Error())
+		}
+	*/
 	return ctx.JSON(http.StatusOK, map[string]interface{}{
 		"messages": "user with id: " + strconv.Itoa(id) + " deleted.",
 	})
