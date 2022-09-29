@@ -12,6 +12,8 @@ import (
 func New() *echo.Echo {
 	e := echo.New()
 
+	e.Pre(middleware.RemoveTrailingSlash())
+
 	// routing
 	e.GET("/users", controller.GetUserController)
 	m.LogMiddleware(e)

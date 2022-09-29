@@ -1,0 +1,255 @@
+{
+	"info": {
+		"_postman_id": "2fe758cb-2523-4a42-974a-83896cdd6e99",
+		"name": "users",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20178478"
+	},
+	"item": [
+		{
+			"name": "LOGIN",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NjQ1MjIyNjksIm5hbWUiOiJNaWZ0YWgiLCJ1c2VySWQiOjF9.9ZEIhSDKEY9JAu1gBKQXsM-WmDPHuMJw4vt77pB2BxI",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"mipa-abirupa@gmail.com\",\r\n    \"password\": \"katakunci123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/users/login",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Users",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NjQ1MjU2OTcsIm5hbWUiOiJNaWZ0YWgiLCJ1c2VySWQiOjF9.n97owwmGgql9caEaP766rFh1Tt8NsC-NCq0fg6nYkzw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/users",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "Membuat baju cosplay dari kain perca",
+							"type": "text"
+						},
+						{
+							"key": "category",
+							"value": "education",
+							"type": "text"
+						},
+						{
+							"key": "release_year",
+							"value": "2022",
+							"type": "text"
+						},
+						{
+							"key": "writter",
+							"value": "Inu san",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8080/users",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Sapi",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "sapi@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "akusapi123",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8080/users",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update User",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "Membuat baju cosplay dari kain perca",
+							"type": "text"
+						},
+						{
+							"key": "category",
+							"value": "education",
+							"type": "text"
+						},
+						{
+							"key": "release_year",
+							"value": "2022",
+							"type": "text"
+						},
+						{
+							"key": "writter",
+							"value": "Inu san",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8080/books/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"books",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete User",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "Membuat baju cosplay dari kain perca",
+							"type": "text"
+						},
+						{
+							"key": "category",
+							"value": "education",
+							"type": "text"
+						},
+						{
+							"key": "release_year",
+							"value": "2022",
+							"type": "text"
+						},
+						{
+							"key": "writter",
+							"value": "Inu san",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8080/books/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"books",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
