@@ -1,9 +1,10 @@
 package routes
 
 import (
+	"restful-api-testing/config"
 	"restful-api-testing/constants"
-	c "restful-api-testing/controller"
-	m "restful-api-testing/middleware"
+	"restful-api-testing/controller"
+	mid "restful-api-testing/middleware"
 
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
@@ -16,26 +17,24 @@ func New() *echo.Echo {
 	e.Pre(middleware.RemoveTrailingSlash())
 
 	// TODO Implement logger
-	m.LogMiddleware(e)
+	mid.LogMiddleware(e)
 
 	//user routes
-	users := e.Group("/users")
-	users.POST("", c.CreateUserController)
-	users.POST("/login", c.LoginUserController)
-	//user need Auth
-	users.GET("", c.GetUsersController, middleware.JWT([]byte(constants.SECRET_JWT_TOKEN)))
-	users.GET("/:id", c.GetUserController, middleware.JWT([]byte(constants.SECRET_JWT_TOKEN)))
-	users.PUT("/:id", c.UpdateUserController, middleware.JWT([]byte(constants.SECRET_JWT_TOKEN)))
-	users.DELETE("/:id", c.DeleteUserController, middleware.JWT([]byte(constants.SECRET_JWT_TOKEN)))
+	users := e.Group(constants.UserIndex)
+	users.POST("", controller.CreateUserController)
+	users.POST("/login", controller.LoginUserController)
+	users.GET("", controller.GetUsersController, middleware.JWT([]byte(config.Cfg.TokenSecret)))    // Tested
+	users.GET("/:id", controller.GetUserController, middleware.JWT([]byte(config.Cfg.TokenSecret))) // Tested
+	users.PUT("/:id", controller.UpdateUserController, middleware.JWT([]byte(config.Cfg.TokenSecret)))
+	users.DELETE("/:id", controller.DeleteUserController, middleware.JWT([]byte(config.Cfg.TokenSecret)))
 
 	//book routes
-	books := e.Group("/books")
-	books.GET("", c.GetBooksController)
-	books.GET("/:id", c.GetBookController)
-	//book Need auth
-	books.POST("", c.CreateBookController, middleware.JWT([]byte(constants.SECRET_JWT_TOKEN)))
-	books.PUT("/:id", c.UpdateBookController, middleware.JWT([]byte(constants.SECRET_JWT_TOKEN)))
-	books.DELETE("/:id", c.DeleteBookController, middleware.JWT([]byte(constants.SECRET_JWT_TOKEN)))
+	books := e.Group(constants.BookIndex)
+	books.GET("", controller.GetBooksController)
+	books.GET("/:id", controller.GetBookController)
+	books.POST("", controller.CreateBookController, middleware.JWT([]byte(config.Cfg.TokenSecret)))
+	books.PUT("/:id", controller.UpdateBookController, middleware.JWT([]byte(config.Cfg.TokenSecret)))
+	books.DELETE("/:id", controller.DeleteBookController, middleware.JWT([]byte(config.Cfg.TokenSecret)))
 
 	return e
 }

@@ -12,28 +12,25 @@ import (
 func GetBooksController(ctx echo.Context) error {
 	var books []model.Book
 	if err := cfg.DB.Find(&books).Error; err != nil {
-		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
+		return echo.NewHTTPError(http.StatusInternalServerError, err.Error())
 	}
 	return ctx.JSON(http.StatusOK, map[string]interface{}{
-		"message": "success get all books",
-		"books":   books,
+		"message": "success",
+		"data":    books,
 	})
 }
 
 func GetBookController(ctx echo.Context) error {
 	var book []model.Book
-	id, err := strconv.Atoi(ctx.Param("id"))
-	if err != nil {
-		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
-	}
+	id, _ := strconv.Atoi(ctx.Param("id"))
 
 	if err := cfg.DB.First(&book, "id = ?", id).Error; err != nil {
-		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
+		return echo.NewHTTPError(http.StatusInternalServerError, err.Error())
 	}
 
 	return ctx.JSON(http.StatusOK, map[string]interface{}{
-		"message": "success get book by id: " + strconv.Itoa(id),
-		"book":    book,
+		"message": "success",
+		"data":    book,
 	})
 }
 
@@ -44,12 +41,11 @@ func CreateBookController(ctx echo.Context) error {
 	ctx.Bind(&book)
 
 	if err := cfg.DB.Save(&book).Error; err != nil {
-		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
+		return echo.NewHTTPError(http.StatusInternalServerError, err.Error())
 	}
 
 	return ctx.JSON(http.StatusCreated, map[string]interface{}{
 		"message": "book created!",
-		"book":    book,
 	})
 }
 
@@ -57,10 +53,8 @@ func UpdateBookController(ctx echo.Context) error {
 
 	var book model.Book
 
-	id, err := strconv.Atoi(ctx.Param("id"))
-	if err != nil {
-		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
-	}
+	id, _ := strconv.Atoi(ctx.Param("id"))
+
 	title := ctx.FormValue("title")
 	category := ctx.FormValue("category")
 	release_year := ctx.FormValue("release_year")
@@ -73,11 +67,11 @@ func UpdateBookController(ctx echo.Context) error {
 		Writter:      writter,
 	}
 	if err := cfg.DB.Model(&book).Where("id = ?", id).Updates(updatedBook).Error; err != nil {
-		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
+		return echo.NewHTTPError(http.StatusInternalServerError, err.Error())
 	}
 
 	return ctx.JSON(http.StatusOK, map[string]interface{}{
-		"messages": "book updated!",
+		"message": "book updated!",
 	})
 }
 
@@ -85,16 +79,13 @@ func DeleteBookController(ctx echo.Context) error {
 
 	var book model.Book
 
-	id, err := strconv.Atoi(ctx.Param("id"))
-	if err != nil {
-		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
-	}
+	id, _ := strconv.Atoi(ctx.Param("id"))
 
 	if err := cfg.DB.Delete(&book, id).Error; err != nil {
-		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
+		return echo.NewHTTPError(http.StatusInternalServerError, err.Error())
 	}
 
 	return ctx.JSON(http.StatusOK, map[string]interface{}{
-		"messages": "book with id: " + strconv.Itoa(id) + " deleted.",
+		"message": "book deleted",
 	})
 }
