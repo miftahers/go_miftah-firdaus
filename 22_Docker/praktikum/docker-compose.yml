@@ -1,0 +1,19 @@
+version: '3.7'
+
+services:
+  db-mysql:
+    image: mysql:8.0.28
+    environment:
+      MYSQL_ROOT_PASSWORD: "secret"
+      MYSQL_DATABASE: "test_database"
+      MYSQL_USER: "test_user"
+      MYSQL_PASSWORD: "secret"
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306'
+
+  app-go:
+    build: ./
+    ports:
+      - "8080:8080"

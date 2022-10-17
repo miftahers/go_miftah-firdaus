@@ -334,7 +334,7 @@ func (s *suiteUsers) TestCreateUserController() {
 			if v.expectCode == http.StatusCreated {
 				s.mock.ExpectBegin()
 				s.mock.ExpectExec(regexp.QuoteMeta("INSERT INTO `users` (`created_at`,`updated_at`,`deleted_at`,`name`,`email`,`password`,`token`) VALUES (?,?,?,?,?,?,?)")).
-					WithArgs(sqlmock.AnyArg(), sqlmock.AnyArg(), nil, "", "", "", "").
+					WithArgs(sqlmock.AnyArg(), sqlmock.AnyArg(), nil, "Miftah Firdaus", "miftahers@gmail.com", "miftah123", "").
 					WillReturnResult(sqlmock.NewResult(1, 1))
 				s.mock.ExpectCommit()
 			}
@@ -345,6 +345,7 @@ func (s *suiteUsers) TestCreateUserController() {
 			e := echo.New()
 			ctx := e.NewContext(r, w)
 			ctx.SetPath(v.path)
+			ctx.Request().Header.Set("Content-Type", "application/json")
 
 			if s.NoError(CreateUserController(ctx)) {
 				body := w.Body.Bytes()
@@ -395,6 +396,7 @@ func (s *suiteUsers) TestCreateUserControllerInvalid() {
 			e := echo.New()
 			ctx := e.NewContext(r, w)
 			ctx.SetPath(v.path)
+			ctx.Request().Header.Set("Content-Type", "application/json")
 
 			err := CreateUserController(ctx).Error()
 			s.Equal(v.expectedResult, err)
