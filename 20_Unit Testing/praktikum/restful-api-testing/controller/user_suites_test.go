@@ -44,6 +44,11 @@ func (s *suiteUsers) SetupSuite() {
 	// End of create mock db
 }
 
+func (s *suiteUsers) TearDownSuite() {
+	config.DB = nil
+	s.mock = nil
+}
+
 // func (s *suiteUsers) TestLoginUserController() {
 
 // 	var testCases = []struct {
@@ -185,7 +190,7 @@ func (s *suiteUsers) TestGetUsersControllerInvalid() {
 		expectedResult string
 	}{
 		{
-			name:           "get users error",
+			name:           "get users database error",
 			path:           "/users",
 			method:         http.MethodGet,
 			expectedResult: echo.NewHTTPError(http.StatusInternalServerError, "Record Not found").Error(),
@@ -234,13 +239,12 @@ func (s *suiteUsers) TestGetUserController() {
 
 	for _, v := range testCases {
 		s.T().Run(v.name, func(t *testing.T) {
-			if v.expectCode == http.StatusOK {
-				expectedResult := sqlmock.NewRows([]string{"name", "email", "password"}).
-					AddRow("User", "user@example.com", "password")
-				s.mock.ExpectQuery(regexp.QuoteMeta("SELECT * FROM `users` WHERE id = ? AND `users`.`deleted_at` IS NULL ORDER BY `users`.`id` LIMIT 1")).
-					WithArgs(1).
-					WillReturnRows(expectedResult)
-			}
+
+			expectedResult := sqlmock.NewRows([]string{"name", "email", "password"}).
+				AddRow("User", "user@example.com", "password")
+			s.mock.ExpectQuery(regexp.QuoteMeta("SELECT * FROM `users` WHERE id = ? AND `users`.`deleted_at` IS NULL ORDER BY `users`.`id` LIMIT 1")).
+				WithArgs(1).
+				WillReturnRows(expectedResult)
 
 			res, _ := json.Marshal(v.Body)
 
@@ -324,20 +328,24 @@ func (s *suiteUsers) TestCreateUserController() {
 			expectCode: http.StatusCreated,
 			method:     http.MethodPost,
 			message:    "user created!",
-			Body:       model.User{},
+			Body: model.User{
+				Name:     "Udin",
+				Email:    "udin@test.com",
+				Password: "P",
+			},
 		},
 	}
 
 	for _, v := range testCases {
 		s.T().Run(v.name, func(t *testing.T) {
 
-			if v.expectCode == http.StatusCreated {
-				s.mock.ExpectBegin()
-				s.mock.ExpectExec(regexp.QuoteMeta("INSERT INTO `users` (`created_at`,`updated_at`,`deleted_at`,`name`,`email`,`password`,`token`) VALUES (?,?,?,?,?,?,?)")).
-					WithArgs(sqlmock.AnyArg(), sqlmock.AnyArg(), nil, "Miftah Firdaus", "miftahers@gmail.com", "miftah123", "").
-					WillReturnResult(sqlmock.NewResult(1, 1))
-				s.mock.ExpectCommit()
-			}
+			// if v.expectCode == http.StatusCreated {
+			s.mock.ExpectBegin()
+			s.mock.ExpectExec(regexp.QuoteMeta("INSERT INTO `users` (`created_at`,`updated_at`,`deleted_at`,`name`,`email`,`password`,`token`) VALUES (?,?,?,?,?,?,?)")).
+				WithArgs(sqlmock.AnyArg(), sqlmock.AnyArg(), nil, "Udin", "udin@test.com", "P", "").
+				WillReturnResult(sqlmock.NewResult(1, 1))
+			s.mock.ExpectCommit()
+			// }
 
 			res, _ := json.Marshal(v.Body)
 			r := httptest.NewRequest(v.method, "/", bytes.NewBuffer(res))
@@ -589,9 +597,4 @@ func (s *suiteUsers) TestDeleteUserControllerInvalid() {
 			s.Equal(v.expectedResult, err)
 		})
 	}
-}
-
-func (s *suiteUsers) TearDownSuite() {
-	config.DB = nil
-	s.mock = nil
 }
