@@ -3,7 +3,6 @@ package config
 import (
 	"fmt"
 	"praktikum/model"
-	"time"
 
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
@@ -12,11 +11,7 @@ import (
 func InitDB() *gorm.DB {
 	db, err := ConnectDB()
 	if err != nil {
-		time.Sleep(15 * time.Second)
-		db, err = ConnectDB()
-		if err != nil {
-			panic(err)
-		}
+		panic(err)
 	}
 
 	err = MigrateDB(db)

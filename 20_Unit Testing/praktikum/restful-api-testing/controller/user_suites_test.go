@@ -26,7 +26,6 @@ type suiteUsers struct {
 func TestSuiteUsers(t *testing.T) {
 	suite.Run(t, new(suiteUsers))
 }
-
 func (s *suiteUsers) SetupSuite() {
 	// Create mock db
 	db, mock, err := sqlmock.New()
@@ -43,14 +42,12 @@ func (s *suiteUsers) SetupSuite() {
 	s.mock = mock
 	// End of create mock db
 }
-
 func (s *suiteUsers) TearDownSuite() {
 	config.DB = nil
 	s.mock = nil
 }
 
 // func (s *suiteUsers) TestLoginUserController() {
-
 // 	var testCases = []struct {
 // 		name       string
 // 		path       string
@@ -71,10 +68,8 @@ func (s *suiteUsers) TearDownSuite() {
 // 			},
 // 		},
 // 	}
-
 // 	for _, v := range testCases {
 // 		s.T().Run(v.name, func(t *testing.T) {
-
 // 			if v.expectCode == http.StatusOK {
 // 				expectedRow := s.mock.NewRows([]string{"id", "name", "email"}).
 // 					AddRow(1, "Example", "email@example.com")
@@ -82,17 +77,14 @@ func (s *suiteUsers) TearDownSuite() {
 // 					WithArgs(sqlmock.AnyArg(), sqlmock.AnyArg()).
 // 					WillReturnRows(expectedRow)
 // 			}
-
 // 			res, _ := json.Marshal(v.Body)
 // 			r := httptest.NewRequest(v.method, "/", bytes.NewBuffer(res))
 // 			w := httptest.NewRecorder()
 // 			e := echo.New()
 // 			ctx := e.NewContext(r, w)
 // 			ctx.SetPath(v.path)
-
 // 			if s.NoError(LoginUserController(ctx)) {
 // 				body := w.Body.Bytes()
-
 // 				type Response struct {
 // 					Message string     `json:"message"`
 // 					Data    model.User `json:"data"`
@@ -101,12 +93,10 @@ func (s *suiteUsers) TearDownSuite() {
 // 				if err := json.Unmarshal(body, &user); err != nil {
 // 					s.Error(err, "error unmarshalling")
 // 				}
-
 // 				s.Equal(v.expectCode, w.Result().StatusCode)
 // 				s.Equal(v.message, user.Message)
 // 				s.Equal(v.Body, body)
 // 			}
-
 // 		})
 // 	}
 // }
@@ -180,7 +170,6 @@ func (s *suiteUsers) TestGetUsersController() {
 		})
 	}
 }
-
 func (s *suiteUsers) TestGetUsersControllerInvalid() {
 
 	var testCases = []struct {
@@ -373,7 +362,6 @@ func (s *suiteUsers) TestCreateUserController() {
 		})
 	}
 }
-
 func (s *suiteUsers) TestCreateUserControllerInvalid() {
 
 	var testCases = []struct {
@@ -559,7 +547,6 @@ func (s *suiteUsers) TestDeleteUserController() {
 		})
 	}
 }
-
 func (s *suiteUsers) TestDeleteUserControllerInvalid() {
 
 	var testCases = []struct {
