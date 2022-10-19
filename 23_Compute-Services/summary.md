@@ -1,15 +1,37 @@
 # Compute services
 
+System dan software deployment: Deployment adalah kegiatan yang bertujuan untuk  menyebarkan aplikasi/produk yang telah dikerjakan oleh para pengembang seringkali untuk mengubah dari status sementara ke permanen. penyebarannya dapat melalui beragam cara tergantung dari jenis aplikasinya, aplikasi web & api ke server sedangkan aplikasi mobile ke playstore/appstore.
 
-## Continous Integration
-adalah `otomatisasi proses`, dilakukan/dibuat dengan tujuan untuk `mengintegrasikan` beragam code dari potential source yang `berbeda` untuk membangun (build) atau mengetesnya (test).
+Strategi deployment:
+- Big-bang deployment / replace deployment strategy
+  - Kelebihan:
+    - Mudah diimplementasikan. cara klasik, tinggal replace.
+    - Perubahan kepada sistem langsung 100% secara instan
+  - Kekurangan:
+    - Terlalu beresiko, rata-rata downtime cukup lama
+- Rollout deployment strategy
+  - Kelebihan:
+    - Lebih aman dan less downtime dari versi sebelumnya
+  - Kekurangan:
+    - Akan ada 2 versi aplikasi yang berjalan secara barengan sampai semua server terdeploy, dan bisa membuat bingung.
+    - Karena sifatnya perlahan satu-persatu, untuk deployment dan rollback lebihlama dari yang bigbang. Karena prosesnya perlahan-lahan sampai semua server terkena efeknya.
+    - Tidak ada control request. Server yang baru ter-deploy dengan aplikasi versi baru, langsung mendapat request yang sama banyaknya dengan server yang lain.
+- Blue/Green deployment strategy
+  - Kelebihan:
+    - Perubahan sangat cepat, sekali switch service langsung berubah 100%
+    - Tidak ada issue beda versi pada service seperti yang terjadi pada rollout development
+  - Kekurangan:
+    - Resource yang dibutuhkan lebih banyak. Karena untuk setiap deployment kita harus menyediakan service yang serupa environtments dengan yang sedang berjalan di production.
+    - Testing harus benar-benar sangat diprioritaskan sebelum di switch, aplikasi harus kita pastikan aman dari request yang tiba-tiba banyak.
+- Canary Deployment strategy
+  - Kelebihan:
+    - Cukup aman
+    - Mudah untuk rollback jika terjadi bug/error, tanpa berimbas ke semua user
+  - Kekurangan:
+    - Untuk mencapai 100% cukup lama dibanding dengan blue/green deploymen. Dengan blue/green deployment, aplikasi langsung 100% terdeploy keseluruh user.
 
-!['Continous Integration'](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fdevopscube.com%2Fwp-content%2Fuploads%2F2016%2F10%2Fcontinuous-integration-in-devops.jpg&f=1&nofb=1&ipt=b9c9ee7eea078eec7a67dfca0b174c8cf7d48d1f2d7dc9671d0e068166ccb036&ipo=images)
+Simple Dev-Ops Cycle
 
-## Continous Delivery || Deployment 
+Dev(Plan -> Code -> Build -> Test) -:> Ops(Release -> Deploy -> Operate -> Monitor)
 
-!['perbedaan Continous Delivery dan Continous Deployment'](https://blog.crisp.se/wp-content/uploads/2013/02/continuous-delivery-deployment-sm.jpg)
-
-
-!['CI/CD Jenkins env'](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmiro.medium.com%2Fmax%2F2200%2F0*ARr9Z3dOHJfPCw4u&f=1&nofb=1&ipt=ee4e1e37b2a37540e0d7681bd4d4c6be94894a9db4bfdcd7d56f70e4672c0c52&ipo=images)
 
