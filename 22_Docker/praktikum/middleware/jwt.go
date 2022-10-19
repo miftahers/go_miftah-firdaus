@@ -17,5 +17,5 @@ func CreateToken(userID int, name string) (string, error) {
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
 
 	//return token + error message
-	return token.SignedString([]byte(config.TokenSecret))
+	return token.SignedString([]byte(config.Cfg.TokenSecret))
 }

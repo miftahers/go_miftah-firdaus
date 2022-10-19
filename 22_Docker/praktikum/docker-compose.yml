@@ -4,10 +4,10 @@ services:
   db-mysql:
     image: mysql:8.0.28
     environment:
-      MYSQL_ROOT_PASSWORD: "secret"
-      MYSQL_DATABASE: "test_database"
-      MYSQL_USER: "test_user"
-      MYSQL_PASSWORD: "secret"
+      MYSQL_ROOT_PASSWORD: "root"
+      MYSQL_DATABASE: "praktikum"
+      MYSQL_USER: "admin"
+      MYSQL_PASSWORD: "admin"
     healthcheck:
       test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
       interval: 5s
@@ -21,5 +21,13 @@ services:
     depends_on:
       db-mysql:
         condition: service_healthy
+    environment:
+      # APIPort: "8080"
+      DB_USERNAME: "root"
+      DB_PASSWORD: "root"
+      DB_HOST: "db-mysql"
+      DB_PORT: "3306"
+      DB_NAME: "praktikum"
+
     ports:
       - "8080:8080"

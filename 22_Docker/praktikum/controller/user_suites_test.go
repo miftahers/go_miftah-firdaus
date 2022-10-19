@@ -240,34 +240,34 @@ func (s *suiteUsers) TestGetAllUsers() {
 	}
 }
 
-// func (s *suiteUsers) TestGetAllUsersError() {
-// 	testCase := []struct {
-// 		name         string
-// 		path         string
-// 		method       string
-// 		expectResult string
-// 	}{
-// 		{
-// 			name:         "error get users",
-// 			path:         "/users",
-// 			method:       http.MethodGet,
-// 			expectResult: echo.NewHTTPError(http.StatusInternalServerError, "Record Not found").Error(),
-// 		},
-// 	}
-// 	for _, v := range testCase {
-// 		s.T().Run(v.name, func(t *testing.T) {
-// 			s.mock.ExpectQuery(regexp.QuoteMeta("SELECT * FROM `users` WHERE `users`.`deleted_at` IS NULL")).
-// 				WillReturnError(errors.New("Record Not Found"))
-// 			r := httptest.NewRequest(v.method, "/", nil)
-// 			w := httptest.NewRecorder()
-// 			e := echo.New()
-// 			ctx := e.NewContext(r, w)
-// 			ctx.SetPath(v.path)
-// 			err := s.handler.GetAllUsers(ctx)
-// 			s.Equal(v.expectResult, err.Error())
-// 		})
-// 	}
-// }
+func (s *suiteUsers) TestGetAllUsersError() {
+	testCase := []struct {
+		name         string
+		path         string
+		method       string
+		expectResult string
+	}{
+		{
+			name:         "error get users",
+			path:         "/users",
+			method:       http.MethodGet,
+			expectResult: echo.NewHTTPError(http.StatusInternalServerError, "Record Not found").Error(),
+		},
+	}
+	for _, v := range testCase {
+		s.T().Run(v.name, func(t *testing.T) {
+			s.mock.ExpectQuery(regexp.QuoteMeta("SELECT * FROM `users` WHERE `users`.`deleted_at` IS NULL")).
+				WillReturnError(errors.New("Record Not Found"))
+			r := httptest.NewRequest(v.method, "/", nil)
+			w := httptest.NewRecorder()
+			e := echo.New()
+			ctx := e.NewContext(r, w)
+			ctx.SetPath(v.path)
+			err := s.handler.GetAllUsers(ctx)
+			s.Equal(v.expectResult, err.Error())
+		})
+	}
+}
 
 func (s *suiteUsers) TestLoginUser() {
 	testCase := []struct {

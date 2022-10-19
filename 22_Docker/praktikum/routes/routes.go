@@ -25,7 +25,7 @@ func Init(db *gorm.DB) *echo.Echo {
 	handlerUser := controller.HandlerUser{
 		UserServices: services,
 	}
-	e.GET("/users", handlerUser.GetAllUsers, middleware.JWT([]byte(config.TokenSecret)))
+	e.GET("/users", handlerUser.GetAllUsers, middleware.JWT([]byte(config.Cfg.TokenSecret)))
 	e.POST("/users/login", handlerUser.LoginUser)
 	e.POST("/users", handlerUser.CreateUser)
 

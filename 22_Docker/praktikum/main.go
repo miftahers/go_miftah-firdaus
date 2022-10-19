@@ -7,9 +7,11 @@ import (
 
 func main() {
 
+	config.InitConfig()
+
 	db := config.InitDB()
 
 	e := routes.Init(db)
 
-	e.Start(":8080")
+	e.Start(config.Cfg.APIPort)
 }

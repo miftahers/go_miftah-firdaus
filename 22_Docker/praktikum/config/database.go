@@ -2,6 +2,7 @@ package config
 
 import (
 	"fmt"
+	"os"
 	"praktikum/model"
 
 	"gorm.io/driver/mysql"
@@ -21,12 +22,12 @@ func InitDB() *gorm.DB {
 	return db
 }
 
-const (
-	DB_Username string = "test_user"
-	DB_Password string = "secret"
-	DB_Port     string = "3306"
-	DB_Host     string = "db-mysql"
-	DB_Name     string = "test_database"
+var (
+	DB_Username = os.Getenv("DB_USERNAME")
+	DB_Password = os.Getenv("DB_PASSWORD")
+	DB_Host     = os.Getenv("DB_HOST")
+	DB_Port     = os.Getenv("DB_PORT")
+	DB_Name     = os.Getenv("DB_NAME")
 )
 
 func ConnectDB() (*gorm.DB, error) {
