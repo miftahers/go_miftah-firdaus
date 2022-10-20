@@ -6,8 +6,6 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: "root"
       MYSQL_DATABASE: "praktikum"
-      MYSQL_USER: "admin"
-      MYSQL_PASSWORD: "admin"
     healthcheck:
       test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
       interval: 5s
@@ -22,12 +20,8 @@ services:
       db-mysql:
         condition: service_healthy
     environment:
-      # APIPort: "8080"
-      DB_USERNAME: "root"
-      DB_PASSWORD: "root"
-      DB_HOST: "db-mysql"
-      DB_PORT: "3306"
+      APIPort: ":8080"
+      DB_ADDRESS: "db-mysql:3306"
       DB_NAME: "praktikum"
-
     ports:
-      - "8080:8080"
+      - "80:8080"

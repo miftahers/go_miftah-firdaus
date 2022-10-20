@@ -6,6 +6,6 @@ import (
 
 type ProfilePicture struct {
 	gorm.Model
-	Path    string `binding:"required"`
-	UsersID uint
+	Path    string `binding:"required" json:"path" form:"path"`
+	UsersID uint   `json:"userid" form:"userid"`
 }

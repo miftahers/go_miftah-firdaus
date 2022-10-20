@@ -7,11 +7,9 @@ import (
 
 func main() {
 
-	config.InitConfig()
-
 	db := config.InitDB()
 
 	e := routes.Init(db)
 
-	e.Start(config.Cfg.APIPort)
+	e.Start(config.APIPort)
 }
